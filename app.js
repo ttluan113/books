@@ -1,10 +1,11 @@
-const getBtnAuthor = document.getElementById('info');
-const author = document.querySelector('.author');
+const getBtnInfoAuthor = document.getElementById('info');
+const infoAuthor = document.querySelector('.author');
 
-getBtnAuthor.addEventListener('click', () => {
-    if (author.style.display === 'block') {
-        author.style.display = 'none';
+getBtnInfoAuthor.addEventListener('click', () => {
+    const displayStyle = window.getComputedStyle(infoAuthor).display;
+    if (displayStyle === 'none') {
+        infoAuthor.style.display = 'block'; // Hiển thị listController
     } else {
-        author.style.display = 'block';
+        infoAuthor.style.display = 'none'; // Ẩn listController
     }
 });

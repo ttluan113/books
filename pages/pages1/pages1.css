@@ -9,8 +9,15 @@
 
 .wrapper {
     width: 100%;
-    background: linear-gradient(to right, #b3e1cd, #85b2fb);
     height: 100vh;
+}
+
+.wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
 }
 
 .top-1 {
@@ -42,7 +49,7 @@
 }
 
 .img-3 img {
-    width: 450px;
+    width: 300px;
     object-fit: cover;
 }
 
@@ -52,13 +59,24 @@
 }
 
 .img-1-2 img {
-    width: 25%;
+    width: 60%;
     object-fit: cover;
-    height: 50%;
+}
+
+.img-1-2 a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-1-2 img:hover {
     transform: scale(1.1);
     transition: all 0.3s ease;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .img-1-2 {
+        flex-direction: column;
+    }
 }

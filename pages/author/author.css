@@ -8,11 +8,18 @@
 }
 
 .wrapper {
-    background: linear-gradient(to right, #b3e1cd, #85b2fb);
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-rows: 10% 90%;
+}
+
+.wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
 }
 
 .top-1 {
@@ -76,5 +83,8 @@
     text-decoration: none;
 }
 
-.div {
+@media only screen and (max-width: 600px) {
+    .bottom-1 {
+        height: fit-content;
+    }
 }

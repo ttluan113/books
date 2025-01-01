@@ -10,7 +10,12 @@
 .container {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to right, #b3e1cd, #85b2fb);
+}
+
+.container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .wrapper {
@@ -157,4 +162,41 @@
 .address h1 {
     text-transform: uppercase;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .inner {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .wrapper {
+        width: 90%;
+    }
+
+    .container {
+        height: 160vh;
+    }
+    .left {
+        text-align: center;
+    }
+    .left img {
+        border-radius: 10px;
+    }
+
+    .right {
+        text-align: center;
+        border-radius: 30px;
+        padding: 10px;
+    }
+    .author {
+        bottom: unset;
+        height: 25vh;
+    }
+    .inner-author {
+        flex-direction: column;
+        gap: 30px;
+        width: 90%;
+    }
 }
