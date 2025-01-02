@@ -522,6 +522,6 @@ btnFontText1.addEventListener('click', () => {
 
 btnFontText2.addEventListener('click', () => {
     des.forEach((paragraph) => {
-        paragraph.style.fontFamily = 'Gilroy-Bold';
+        paragraph.style.fontFamily = 'Open Sans';
     });
 });
