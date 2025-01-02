@@ -188,6 +188,14 @@ td {
     transform: translateX(-50%);
 }
 
+.comment {
+    margin-top: 50px;
+    border-top: 1px solid #004aad;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .controller-bottom button {
     width: 100px;
     height: 100px;

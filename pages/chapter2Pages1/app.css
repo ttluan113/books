@@ -137,6 +137,14 @@ p {
     text-align: justify;
 }
 
+.comment {
+    margin-top: 50px;
+    border-top: 1px solid #004aad;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .content-1 p {
     line-height: 2;
 }

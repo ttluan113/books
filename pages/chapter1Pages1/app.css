@@ -154,10 +154,13 @@ td {
     color: #fff;
 }
 
-/* .images {
-    width: 50%;
-    margin: 0px auto;
-} */
+.comment {
+    margin-top: 50px;
+    border-top: 1px solid #004aad;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 .images img {
     width: 50%;
@@ -386,10 +389,6 @@ td {
     border: none;
     cursor: pointer;
     z-index: 9999;
-}
-
-.questions {
-    border-top: 1px solid #004aad;
 }
 
 .questions-title {
