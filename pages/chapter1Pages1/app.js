@@ -446,7 +446,7 @@ document.getElementById('btn-down-1').addEventListener('click', function () {
 
 const btnFontText1 = document.getElementById('font-text-1');
 const btnFontText2 = document.getElementById('font-text-2');
-const des = document.querySelectorAll('.content-1 p');
+const des = document.querySelectorAll('.inner-content p');
 
 btnFontText1.addEventListener('click', () => {
     des.forEach((paragraph) => {

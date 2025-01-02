@@ -115,13 +115,27 @@
                                 </div>
                             </div>
                         </div>
-
-                        <p>
                         <div class="images">
-                            <img src="./images/img1.png" alt="" />
-                            <img src="./images/img2.png" alt="" />
-                            <img src="./images/img3.png" alt="" />
+                            <div>
+                                <img src="./images/img1.png" alt="" />
+                                <p style="text-align: center; font-style: italic;padding-bottom: 20px;">
+                                    Hình 2.2. Hình
+                                    ảnh dân
+                                    cư sống trên đảo Sip
+                                    (sưu
+                                    tầm)</p>
+                            </div>
+                            <div>
+                                <img src="./images/img2.png" alt="" />
+                                <p style="text-align: center; font-style: italic;padding-bottom: 20px;">
+                                    Hình 2.3. Nước biển xanh trong nổi tiếng của đảo Sip (sưu tầm)</p>
+                            </div>
+                            <div>
+                                <img src="./images/img3.png" alt="" />
+                            </div>
+
                         </div>
+
                         <p>
                             Đảo Sip thuộc châu Á. Hòn đảo nằm ở Địa Trung Hải này bị Thổ Nhĩ Kỳ và Hy lạp chiếm đóng mỗi
                             bên một nửa; có diện tích là 9.250 km2 và dân số là 735.000 người.
@@ -1828,7 +1842,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script type="text/javascript">
-        $('.images').slick();
+        $('.images').slick({
+            arrows: true,
+            dots: true,
+        });
     </script>
 
     <script src="./app.js"></script>

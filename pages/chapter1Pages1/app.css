@@ -22,6 +22,12 @@
     padding: 0px 20px;
 }
 
+#icons:hover {
+    color: #fc8742;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
 .wrapper video {
     width: 100%;
     height: 15vh;
@@ -309,6 +315,7 @@ td {
 .highlight {
     background-color: #ffed00;
     color: #000;
+    font-family: inherit;
 }
 
 .questions {
