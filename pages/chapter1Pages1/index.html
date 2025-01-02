@@ -108,7 +108,16 @@
                     <button id="btn-down-1"><i class="fa-solid fa-chevron-up"></i></button>
                 </div>
                 <div class="inner-content">
+
                     <div class="content-1">
+
+                        <div class="audio">
+                            <div class="inner-audio">
+                                <audio src="./audios/audio1.mp3" controls></audio>
+                            </div>
+                        </div>
+
+
                         <div class="test">
                             <h4>1. Vạn Lý Trường Thành có đúng là một vạn dặm hay không?</h4>
                             <button class="comment-btn">
@@ -132,15 +141,16 @@
                             Thật ra Vạn Lý Trường Thành gồm nhiều đoạn Trường Thành nối liền với nhau do các nước
                             chư hẩu đã xây dựng hơn hai ngàn năm trước đây. <br />
                         <div class="images">
-                            <img src="./images/img1.jpg" alt="" />
-                            <img src="./images/img2.jpg" alt="" />
-                        </div>
-                        <p style="font-style: italic;border-bottom: 1px solid #000;">1.Vạn Lý Trường Thành (giản thể:
-                            万里长城; phồn thể: 萬里長城; bính âm: Wànlĭ Chángchéng; nghĩa đen 'Bức tường dài vạn (mười nghìn)
-                            dặm'), gọi tắt là Trường Thành</p>
-                        <div class="images">
-                            <img src="./images/img3.jpg" alt="" />
-                            <img src="./images/img4.jpg" alt="" />
+                            <div>
+                                <img src="./images/img1.png" alt="" />
+                                <p style="text-align: center; font-style: italic;padding-bottom: 20px;">
+                                    Hình ảnh Vạn lý Trường Thành – Nguồn: Internet </p>
+                            </div>
+                            <div>
+                                <img src="./images/img2.png" alt="" />
+                                <p style="text-align: center; font-style: italic;padding-bottom: 20px;">
+                                    Hình ảnh Vạn lý Trường Thành – Nguồn: Internet </p>
+                            </div>
                         </div>
                         <br />
                         <p>
@@ -170,8 +180,15 @@
 
                         </p>
 
+
+                        <div class="audio">
+                            <div class="inner-audio">
+                                <audio src="./audios/audio2.mp3" controls></audio>
+                            </div>
+                        </div>
+
                         <div class="test">
-                            <h4>2. Th. Tlà hơn mười ba ngàn dặm T</h4>
+                            <h4>2. Thế giới có bao nhiêu dân tộc ?</h4>
                             <button class="comment-btn">
                                 <i class="fa-regular fa-comments"></i>
                             </button>
@@ -951,6 +968,8 @@
                         </div>
                     </div>
 
+                    <video id="video" src="./videos/video15.mp4" controls muted></video>
+
                     <p>
                         Nước Nga là một nước Đại lục, đến thế kỷ XVII, mặt phía Tây và phía Nam mới có đường ra
                         biển. Sa hoàng nước Nga muốn chiếm được lối ra biển để giành quyền kiểm soát trên biển. Họ
@@ -1214,6 +1233,8 @@
                         </div>
                     </div>
 
+                    <video id="video" controls muted src="./videos/video20.mp4"></video>
+
                     <p>
                         Dưới triều nhà Hán, Trung Quốc đã mở được một con đường thông thương buôn bán có khởi điểm
                         là Thủ đô Trường An thời bấy giờ (nay là Tây An) và vắt ngang qua đại lục châu Á, chạy thẳng
@@ -1356,7 +1377,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script type="text/javascript">
-        $('.images').slick();
+        $('.images').slick({
+            arrows: true,
+            dots: true,
+            slidesToShow: 1,
+        });
     </script>
 
     <script src="./app.js"></script>
