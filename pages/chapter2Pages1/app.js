@@ -149,26 +149,41 @@ function test2() {
 const btnFullScreen = document.getElementById('btn-full-screen');
 const header = document.getElementById('header');
 const videoHeader = document.getElementById('header-video');
+const btnXmark = document.getElementById('test3'); // Phần tử chứa nút xmark
+
+// Biến để theo dõi trạng thái fullscreen
+let isFullScreen = false;
 
 btnFullScreen.addEventListener('click', () => {
-    // Cập nhật trạng thái hiển thị của các phần tử
-    const headerDisplay = window.getComputedStyle(header).display;
-    const videoHeaderDisplay = window.getComputedStyle(videoHeader).display;
-
-    // Kiểm tra điều kiện hiển thị
-    if (headerDisplay === 'flex' && videoHeaderDisplay === 'block') {
+    // Kiểm tra nếu chưa ở chế độ fullscreen
+    if (!isFullScreen) {
+        // Khi vào chế độ fullscreen, ẩn header và videoHeader, hiển thị nút xmark
         header.style.display = 'none';
         videoHeader.style.display = 'none';
+        btnXmark.style.display = 'block'; // Hiển thị nút xmark
+        isFullScreen = true; // Đánh dấu đã vào fullscreen
+    }
+});
+
+btnXmark.addEventListener('click', () => {
+    // Khi nhấn vào nút xmark, thoát chế độ fullscreen
+    if (isFullScreen) {
+        header.style.display = 'flex';
+        videoHeader.style.display = 'block';
+        btnXmark.style.display = 'none'; // Ẩn nút xmark
+        isFullScreen = false; // Đánh dấu thoát fullscreen
     }
 });
 
 // Dữ liệu câu hỏi
 const questionsContent1 = document.querySelector('.questions .questions-content');
 const questionsContent2 = document.querySelector('.questions2 .questions-content');
+const questionsContent3 = document.querySelector('.questions3 .questions-content');
+
 const submitBtn = document.querySelector('.submit');
 const resetBtn = document.querySelector('.reset');
 
-// Dữ liệu câu hỏi phần I (Đúng/Sai)
+// Dữ liệu câu hỏi phần I (Chọn Đúng Sai)
 const questionsPart1 = [
     {
         question: 'Câu 1: Hoẵng được biết đến là loài ngủ rất ít, chỉ khoảng 4 tiếng một ngày.',
@@ -192,7 +207,6 @@ const questionsPart1 = [
     },
 ];
 
-// Dữ liệu câu hỏi phần II (Lựa Chọn Đáp Án Đúng)
 const questionsPart2 = [
     {
         question: 'Câu 1: Vì sao thân cây thường có hình trụ tròn?',
@@ -239,8 +253,11 @@ const questionsPart2 = [
         answers: ['30 - 50 km/giờ', '50 - 60 km/giờ', '100 - 120 km/giờ', '69 - 90 km/giờ'],
         correctAnswers: ['100 - 120 km/giờ'], // Một đáp án đúng
     },
+];
+
+const questionsPart3 = [
     {
-        question: 'Câu 6: Điều gì khiến những cây cảnh nhỏ trong vườn thực vật Thượng Hải có tuổi đời cao?',
+        question: 'Câu 1: Điều gì khiến những cây cảnh nhỏ trong vườn thực vật Thượng Hải có tuổi đời cao?',
         answers: [
             'Chúng được chiết cành từ những cây cổ thụ hàng trăm năm tuổi.',
             'Chúng được phục hồi từ phần gốc của những cây hoang dã bị chặt hạ hoặc mục nát.',
@@ -250,10 +267,10 @@ const questionsPart2 = [
         correctAnswers: [
             'Chúng được phục hồi từ phần gốc của những cây hoang dã bị chặt hạ hoặc mục nát.',
             'Chúng được chăm sóc bằng phương pháp đặc biệt giúp kéo dài tuổi thọ.',
-        ], // Nhiều đáp án đúng
+        ], // Đáp án đúng
     },
     {
-        question: 'Câu 7: Nguyên nhân nào khiến cành hoa cắm trong nước bị rũ đầu và mất màu tươi?',
+        question: 'Câu 2: Nguyên nhân nào khiến cành hoa cắm trong nước bị rũ đầu và mất màu tươi?',
         answers: [
             'Do sữa trong cây chảy ra làm tắc ống dẫn nước.',
             'Do phần cắm trong nước bị thối rữa bởi vi khuẩn.',
@@ -263,37 +280,37 @@ const questionsPart2 = [
         correctAnswers: [
             'Do phần cắm trong nước bị thối rữa bởi vi khuẩn.',
             'Do sữa trong cây chảy ra làm tắc ống dẫn nước.',
-        ], // Nhiều đáp án đúng
+        ], // Đáp án đúng
     },
     {
-        question: 'Câu 8: Cây trên núi thích nghi với điều kiện thời tiết khắc nghiệt bằng cách nào?',
+        question: 'Câu 3: Cây trên núi thích nghi với điều kiện thời tiết khắc nghiệt bằng cách nào?',
         answers: [
             'Rụng lá vào mùa đông.',
             'Có lá hình kim chịu được tuyết.',
             'Thay đổi màu sắc của vỏ cây.',
             'Tự động di chuyển xuống chân núi vào mùa đông.',
         ],
-        correctAnswers: ['Rụng lá vào mùa đông.', 'Có lá hình kim chịu được tuyết.'], // Nhiều đáp án đúng
+        correctAnswers: ['Rụng lá vào mùa đông.', 'Có lá hình kim chịu được tuyết.'], // Đáp án đúng
     },
     {
-        question: 'Câu 9: Đặc điểm nào giúp thực vật ăn côn trùng bắt mồi?',
+        question: 'Câu 4: Đặc điểm nào giúp thực vật ăn côn trùng bắt mồi?',
         answers: [
             'Có khả năng di chuyển nhanh.',
             'Có cảm giác cực kỳ nhạy.',
             'Lá có thể biến hình để bắt côn trùng.',
             'Có khả năng ngụy trang giống côn trùng.',
         ],
-        correctAnswers: ['Có cảm giác cực kỳ nhạy.', 'Lá có thể biến hình để bắt côn trùng.'], // Nhiều đáp án đúng
+        correctAnswers: ['Có cảm giác cực kỳ nhạy.', 'Lá có thể biến hình để bắt côn trùng.'], // Đáp án đúng
     },
     {
-        question: 'Câu 10: Giả thuyết ban đầu về khả năng kháng lạnh của thực vật là gì?',
+        question: 'Câu 5: Giả thuyết ban đầu về khả năng kháng lạnh của thực vật là gì?',
         answers: [
             'Thực vật có thể sản sinh ra nhiệt lượng.',
             'Các tổ chức của cây chứa ít nước vào mùa đông.',
             'Vỏ cây có khả năng dẫn nhiệt để bảo vệ cây.',
             'Thực vật có thể di chuyển đến nơi ấm áp hơn vào mùa đông.',
         ],
-        correctAnswers: ['Thực vật có thể sản sinh ra nhiệt lượng.', 'Vỏ cây có khả năng dẫn nhiệt để bảo vệ cây.'], // Nhiều đáp án đúng
+        correctAnswers: ['Thực vật có thể sản sinh ra nhiệt lượng.', 'Vỏ cây có khả năng dẫn nhiệt để bảo vệ cây.'], // Đáp án đúng
     },
 ];
 
@@ -334,6 +351,26 @@ questionsPart2.forEach((item, index) => {
         </div>
     `;
     questionsContent2.innerHTML += questionHtml;
+});
+
+questionsPart3.forEach((item, index) => {
+    const options = item.answers
+        .map(
+            (answer) =>
+                `<button class="btn-answer" data-answer="${answer}" data-correct="${item.correctAnswers.includes(
+                    answer,
+                )}">${answer}</button>`,
+        )
+        .join('');
+    const questionHtml = `
+        <div class="question-block" data-index="${index}">
+            <p>${item.question}</p>
+            <div class="answer">
+                ${options}
+            </div>
+        </div>
+    `;
+    questionsContent3.innerHTML += questionHtml;
 });
 
 // Sự kiện chọn đáp án
@@ -455,7 +492,7 @@ document.getElementById('btn-down-1').addEventListener('click', function () {
 
 const btnFontText1 = document.getElementById('font-text-1');
 const btnFontText2 = document.getElementById('font-text-2');
-const des = document.querySelectorAll('.content-1 p');
+const des = document.querySelectorAll('.inner-content p');
 
 btnFontText1.addEventListener('click', () => {
     des.forEach((paragraph) => {

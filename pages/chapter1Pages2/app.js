@@ -149,27 +149,41 @@ function test2() {
 const btnFullScreen = document.getElementById('btn-full-screen');
 const header = document.getElementById('header');
 const videoHeader = document.getElementById('header-video');
+const btnXmark = document.getElementById('test3'); // Phần tử chứa nút xmark
+
+// Biến để theo dõi trạng thái fullscreen
+let isFullScreen = false;
 
 btnFullScreen.addEventListener('click', () => {
-    // Cập nhật trạng thái hiển thị của các phần tử
-    const headerDisplay = window.getComputedStyle(header).display;
-    const videoHeaderDisplay = window.getComputedStyle(videoHeader).display;
-
-    // Kiểm tra điều kiện hiển thị
-    if (headerDisplay === 'flex' && videoHeaderDisplay === 'block') {
+    // Kiểm tra nếu chưa ở chế độ fullscreen
+    if (!isFullScreen) {
+        // Khi vào chế độ fullscreen, ẩn header và videoHeader, hiển thị nút xmark
         header.style.display = 'none';
         videoHeader.style.display = 'none';
+        btnXmark.style.display = 'block'; // Hiển thị nút xmark
+        isFullScreen = true; // Đánh dấu đã vào fullscreen
+    }
+});
+
+btnXmark.addEventListener('click', () => {
+    // Khi nhấn vào nút xmark, thoát chế độ fullscreen
+    if (isFullScreen) {
+        header.style.display = 'flex';
+        videoHeader.style.display = 'block';
+        btnXmark.style.display = 'none'; // Ẩn nút xmark
+        isFullScreen = false; // Đánh dấu thoát fullscreen
     }
 });
 
 // Dữ liệu câu hỏi
 const questionsContent1 = document.querySelector('.questions .questions-content');
 const questionsContent2 = document.querySelector('.questions2 .questions-content');
+const questionsContent3 = document.querySelector('.questions3 .questions-content');
+
 const submitBtn = document.querySelector('.submit');
 const resetBtn = document.querySelector('.reset');
 
 // Dữ liệu câu hỏi phần I (Chọn Đúng Sai)
-// Dữ liệu câu hỏi phần I (Đúng/Sai)
 const questionsPart1 = [
     {
         question: 'Câu 1: Thành phố Roma được gọi là "thành phố vĩnh cửu" vì lịch sử lâu đời từ thời La Mã cổ đại.',
@@ -194,7 +208,6 @@ const questionsPart1 = [
     },
 ];
 
-// Dữ liệu câu hỏi phần II (Chọn Đáp Án Đúng Nhất)
 const questionsPart2 = [
     {
         question: 'Câu 1: Đâu là quốc gia nhỏ nhất thế giới về diện tích?',
@@ -207,19 +220,47 @@ const questionsPart2 = [
         correctAnswers: ['Everest'], // Một đáp án đúng
     },
     {
-        question: 'Câu 3: Những quốc gia nào có ranh giới chia cắt bởi vĩ tuyến 38?',
-        answers: ['Hàn Quốc', 'Bắc Triều Tiên', 'Nhật Bản', 'Trung Quốc'],
-        correctAnswers: ['Hàn Quốc', 'Bắc Triều Tiên'], // Nhiều đáp án đúng
+        question: 'Câu 3: Cảng lớn nhất Đông Á là cảng nào?',
+        answers: ['Yokohama (Nhật Bản)', 'Busan (Hàn Quốc)', 'Thượng Hải (Trung Quốc)', 'Hong Kong'],
+        correctAnswers: ['Thượng Hải (Trung Quốc)'], // Một đáp án đúng
+    },
+    {
+        question: 'Câu 4: Sông nào dài nhất châu Á?',
+        answers: ['Sông Mekong', 'Sông Hoàng Hà', 'Sông Trường Giang', 'Sông Ganges'],
+        correctAnswers: ['Sông Trường Giang'], // Một đáp án đúng
+    },
+    {
+        question: 'Câu 5: Sa mạc lớn nhất thế giới là gì?',
+        answers: ['Sahara', 'Gobi', 'Kalahari', 'Atacama'],
+        correctAnswers: ['Sahara'], // Một đáp án đúng
+    },
+];
+
+const questionsPart3 = [
+    {
+        question: 'Câu 1: Hai lục địa nào được xem là nhỏ nhất thế giới?',
+        answers: ['Châu Phi', 'Châu Úc', 'Châu Âu', 'Nam Mỹ'],
+        correctAnswers: ['Châu Úc', 'Châu Âu'], // Đáp án đúng
+    },
+    {
+        question: 'Câu 2: Các thành phố nào nằm giữa hai lục địa?',
+        answers: ['Istanbul', 'Cairo', 'Rome', 'Casablanca'],
+        correctAnswers: ['Istanbul', 'Cairo'], // Đáp án đúng
+    },
+    {
+        question: 'Câu 3: Đâu là hai đỉnh núi cao nhất trong danh sách sau?',
+        answers: ['Everest', 'Mont Blanc', 'Denali', 'Kilimanjaro'],
+        correctAnswers: ['Everest', 'Mont Blanc'], // Đáp án đúng
     },
     {
         question: 'Câu 4: Hai đại dương nào lớn nhất thế giới?',
         answers: ['Thái Bình Dương', 'Đại Tây Dương', 'Ấn Độ Dương', 'Bắc Băng Dương'],
-        correctAnswers: ['Thái Bình Dương', 'Đại Tây Dương'], // Nhiều đáp án đúng
+        correctAnswers: ['Thái Bình Dương', 'Đại Tây Dương'], // Đáp án đúng
     },
     {
-        question: 'Câu 5: Đâu là hai đỉnh núi cao nhất trong danh sách sau?',
-        answers: ['Everest', 'Mont Blanc', 'Denali', 'Kilimanjaro'],
-        correctAnswers: ['Everest', 'Mont Blanc'], // Nhiều đáp án đúng
+        question: 'Câu 5: Hai quốc gia nào chia sẻ đảo Sip?',
+        answers: ['Thổ Nhĩ Kỳ', 'Hy Lạp', 'Italy', 'Ai Cập'],
+        correctAnswers: ['Thổ Nhĩ Kỳ', 'Hy Lạp'], // Đáp án đúng
     },
 ];
 
@@ -260,6 +301,26 @@ questionsPart2.forEach((item, index) => {
         </div>
     `;
     questionsContent2.innerHTML += questionHtml;
+});
+
+questionsPart3.forEach((item, index) => {
+    const options = item.answers
+        .map(
+            (answer) =>
+                `<button class="btn-answer" data-answer="${answer}" data-correct="${item.correctAnswers.includes(
+                    answer,
+                )}">${answer}</button>`,
+        )
+        .join('');
+    const questionHtml = `
+        <div class="question-block" data-index="${index}">
+            <p>${item.question}</p>
+            <div class="answer">
+                ${options}
+            </div>
+        </div>
+    `;
+    questionsContent3.innerHTML += questionHtml;
 });
 
 // Sự kiện chọn đáp án
@@ -381,7 +442,7 @@ document.getElementById('btn-down-1').addEventListener('click', function () {
 
 const btnFontText1 = document.getElementById('font-text-1');
 const btnFontText2 = document.getElementById('font-text-2');
-const des = document.querySelectorAll('.content-1 p');
+const des = document.querySelectorAll('.inner-content p');
 
 btnFontText1.addEventListener('click', () => {
     des.forEach((paragraph) => {

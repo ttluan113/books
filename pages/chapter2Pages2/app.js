@@ -149,27 +149,41 @@ function test2() {
 const btnFullScreen = document.getElementById('btn-full-screen');
 const header = document.getElementById('header');
 const videoHeader = document.getElementById('header-video');
+const btnXmark = document.getElementById('test3'); // Phần tử chứa nút xmark
+
+// Biến để theo dõi trạng thái fullscreen
+let isFullScreen = false;
 
 btnFullScreen.addEventListener('click', () => {
-    // Cập nhật trạng thái hiển thị của các phần tử
-    const headerDisplay = window.getComputedStyle(header).display;
-    const videoHeaderDisplay = window.getComputedStyle(videoHeader).display;
-
-    // Kiểm tra điều kiện hiển thị
-    if (headerDisplay === 'flex' && videoHeaderDisplay === 'block') {
+    // Kiểm tra nếu chưa ở chế độ fullscreen
+    if (!isFullScreen) {
+        // Khi vào chế độ fullscreen, ẩn header và videoHeader, hiển thị nút xmark
         header.style.display = 'none';
         videoHeader.style.display = 'none';
+        btnXmark.style.display = 'block'; // Hiển thị nút xmark
+        isFullScreen = true; // Đánh dấu đã vào fullscreen
+    }
+});
+
+btnXmark.addEventListener('click', () => {
+    // Khi nhấn vào nút xmark, thoát chế độ fullscreen
+    if (isFullScreen) {
+        header.style.display = 'flex';
+        videoHeader.style.display = 'block';
+        btnXmark.style.display = 'none'; // Ẩn nút xmark
+        isFullScreen = false; // Đánh dấu thoát fullscreen
     }
 });
 
 // Dữ liệu câu hỏi
 const questionsContent1 = document.querySelector('.questions .questions-content');
 const questionsContent2 = document.querySelector('.questions2 .questions-content');
+const questionsContent3 = document.querySelector('.questions3 .questions-content');
+
 const submitBtn = document.querySelector('.submit');
 const resetBtn = document.querySelector('.reset');
 
 // Dữ liệu câu hỏi phần I (Chọn Đúng Sai)
-// Dữ liệu câu hỏi phần I (Đúng/Sai)
 const questionsPart1 = [
     {
         question: 'Câu 1: Tia chớp có hình dạng giống cây khô treo ngược do sự phân nhánh của tia chớp tiên dẫn.',
@@ -195,7 +209,6 @@ const questionsPart1 = [
     },
 ];
 
-// Dữ liệu câu hỏi phần II (Chọn Đáp Án Đúng Nhất)
 const questionsPart2 = [
     {
         question: 'Câu 1: Băng trên mái nhà hình thành như thế nào?',
@@ -220,7 +233,40 @@ const questionsPart2 = [
         ], // Một đáp án đúng
     },
     {
-        question: 'Câu 3: Tại sao không thể làm cho một hạt như electron đạt vận tốc ánh sáng?',
+        question: 'Câu 3: Điều gì làm thuỷ tinh trong suốt?',
+        answers: [
+            'Vì các phân tử của thuỷ tinh được sắp xếp một cách trật tự như các chất rắn khác.',
+            'Vì thuỷ tinh có cấu trúc phân tử ngẫu nhiên, ánh sáng dễ dàng đi qua.',
+            'Vì thuỷ tinh chứa nhiều tạp chất, giúp ánh sáng phản chiếu mạnh mẽ.',
+            'Vì thuỷ tinh được làm từ các chất lỏng, không bị cản ánh sáng.',
+        ],
+        correctAnswers: ['Vì thuỷ tinh có cấu trúc phân tử ngẫu nhiên, ánh sáng dễ dàng đi qua.'], // Một đáp án đúng
+    },
+    {
+        question: 'Câu 4: Tại sao nam châm mất dần từ tính?',
+        answers: [
+            'Vì nam châm bị mất từ tính khi bị tác động bởi nhiệt độ và rung động mạnh.',
+            'Vì các vùng từ tính trong nam châm bị trộn lẫn với các tạp chất, làm mất từ tính.',
+            'Vì nam châm tự động mất từ tính sau một thời gian sử dụng.',
+            'Vì từ tính trong nam châm bị tác động bởi từ trường mạnh bên ngoài.',
+        ],
+        correctAnswers: ['Vì nam châm bị mất từ tính khi bị tác động bởi nhiệt độ và rung động mạnh.'], // Một đáp án đúng
+    },
+    {
+        question: 'Câu 5: Cực quang là hiện tượng như thế nào?',
+        answers: [
+            'Cực quang là hiện tượng ánh sáng do sóng vô tuyến phát ra.',
+            'Cực quang xảy ra khi dòng hạt mang điện từ Mặt trời va chạm với khí quyển Trái đất.',
+            'Cực quang được tạo ra bởi các tia sáng từ các ngôi sao.',
+            'Cực quang là hiện tượng khí quyển Trái đất phản chiếu ánh sáng từ Mặt Trời.',
+        ],
+        correctAnswers: ['Cực quang xảy ra khi dòng hạt mang điện từ Mặt trời va chạm với khí quyển Trái đất.'], // Một đáp án đúng
+    },
+];
+
+const questionsPart3 = [
+    {
+        question: 'Câu 1: Tại sao không thể làm cho một hạt như electron đạt vận tốc ánh sáng?',
         answers: [
             'Vì electron có khối lượng rất nhỏ.',
             'Vì electron không thể thu được năng lượng vô hạn.',
@@ -231,7 +277,60 @@ const questionsPart2 = [
             'Vì electron không thể thu được năng lượng vô hạn.',
             'Vì tốc độ ánh sáng là cực đại trong vũ trụ.',
             'Vì khi đạt vận tốc gần ánh sáng, electron sẽ không thể chuyển động nhanh hơn nữa.',
-        ], // Nhiều đáp án đúng
+        ], // Đáp án đúng
+    },
+    {
+        question: 'Câu 2: Điều gì ảnh hưởng đến sự tăng tốc khi người nhảy dù rơi tự do?',
+        answers: [
+            'Sức cản của không khí làm giảm tốc độ tăng của người nhảy dù.',
+            'Vận tốc người nhảy dù sẽ không bao giờ vượt quá 50 m/s.',
+            'Vận tốc người nhảy dù tăng mãi cho đến khi mở dù.',
+            'Vận tốc người nhảy dù đạt ổn định sau 12 giây rơi.',
+        ],
+        correctAnswers: [
+            'Sức cản của không khí làm giảm tốc độ tăng của người nhảy dù.',
+            'Vận tốc người nhảy dù đạt ổn định sau 12 giây rơi.',
+        ], // Đáp án đúng
+    },
+    {
+        question: 'Câu 3: Cách tính trọng lượng của các ngôi sao dựa vào các yếu tố nào?',
+        answers: [
+            'Khoảng cách và chu kỳ chuyển động của các thiên thể.',
+            'Khối lượng của Trái Đất và các thiên thể khác.',
+            'Gia tốc của lực hấp dẫn trên Trái Đất.',
+            'Dựa vào các quỹ đạo của các thiên thể.',
+        ],
+        correctAnswers: [
+            'Khoảng cách và chu kỳ chuyển động của các thiên thể.',
+            'Dựa vào các quỹ đạo của các thiên thể.',
+        ], // Đáp án đúng
+    },
+    {
+        question: 'Câu 4: Những điều kiện nào cần thiết để xảy ra hiện tượng nhật thực?',
+        answers: [
+            'Ba thiên thể Trái Đất, Mặt Trăng và Mặt Trời phải thẳng hàng.',
+            'Mặt Trăng phải che khuất toàn bộ Mặt Trời.',
+            'Mặt Trăng phải có kích thước lớn hơn Mặt Trời.',
+            'Hiện tượng chỉ xảy ra khi Mặt Trăng ở gần Trái Đất.',
+        ],
+        correctAnswers: [
+            'Ba thiên thể Trái Đất, Mặt Trăng và Mặt Trời phải thẳng hàng.',
+            'Hiện tượng chỉ xảy ra khi Mặt Trăng ở gần Trái Đất.',
+        ], // Đáp án đúng
+    },
+    {
+        question: 'Câu 5: Tại sao bầu trời có màu xanh và không gian lại màu đen?',
+        answers: [
+            'Ánh sáng xanh bị tán xạ nhiều hơn các màu khác trong không khí.',
+            'Ánh sáng Mặt Trời truyền qua không gian không bị tán xạ.',
+            'Mắt người nhạy cảm hơn với màu xanh.',
+            'Không gian ngoài Trái Đất không chứa khí để phản chiếu ánh sáng.',
+        ],
+        correctAnswers: [
+            'Ánh sáng xanh bị tán xạ nhiều hơn các màu khác trong không khí.',
+            'Ánh sáng Mặt Trời truyền qua không gian không bị tán xạ.',
+            'Mắt người nhạy cảm hơn với màu xanh.',
+        ], // Đáp án đúng
     },
 ];
 
@@ -272,6 +371,26 @@ questionsPart2.forEach((item, index) => {
         </div>
     `;
     questionsContent2.innerHTML += questionHtml;
+});
+
+questionsPart3.forEach((item, index) => {
+    const options = item.answers
+        .map(
+            (answer) =>
+                `<button class="btn-answer" data-answer="${answer}" data-correct="${item.correctAnswers.includes(
+                    answer,
+                )}">${answer}</button>`,
+        )
+        .join('');
+    const questionHtml = `
+        <div class="question-block" data-index="${index}">
+            <p>${item.question}</p>
+            <div class="answer">
+                ${options}
+            </div>
+        </div>
+    `;
+    questionsContent3.innerHTML += questionHtml;
 });
 
 // Sự kiện chọn đáp án
@@ -393,7 +512,7 @@ document.getElementById('btn-down-1').addEventListener('click', function () {
 
 const btnFontText1 = document.getElementById('font-text-1');
 const btnFontText2 = document.getElementById('font-text-2');
-const des = document.querySelectorAll('.content-1 p');
+const des = document.querySelectorAll('.inner-content p');
 
 btnFontText1.addEventListener('click', () => {
     des.forEach((paragraph) => {

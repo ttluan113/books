@@ -149,22 +149,37 @@ function test2() {
 const btnFullScreen = document.getElementById('btn-full-screen');
 const header = document.getElementById('header');
 const videoHeader = document.getElementById('header-video');
+const btnXmark = document.getElementById('test3'); // Phần tử chứa nút xmark
+
+// Biến để theo dõi trạng thái fullscreen
+let isFullScreen = false;
 
 btnFullScreen.addEventListener('click', () => {
-    // Cập nhật trạng thái hiển thị của các phần tử
-    const headerDisplay = window.getComputedStyle(header).display;
-    const videoHeaderDisplay = window.getComputedStyle(videoHeader).display;
-
-    // Kiểm tra điều kiện hiển thị
-    if (headerDisplay === 'flex' && videoHeaderDisplay === 'block') {
+    // Kiểm tra nếu chưa ở chế độ fullscreen
+    if (!isFullScreen) {
+        // Khi vào chế độ fullscreen, ẩn header và videoHeader, hiển thị nút xmark
         header.style.display = 'none';
         videoHeader.style.display = 'none';
+        btnXmark.style.display = 'block'; // Hiển thị nút xmark
+        isFullScreen = true; // Đánh dấu đã vào fullscreen
+    }
+});
+
+btnXmark.addEventListener('click', () => {
+    // Khi nhấn vào nút xmark, thoát chế độ fullscreen
+    if (isFullScreen) {
+        header.style.display = 'flex';
+        videoHeader.style.display = 'block';
+        btnXmark.style.display = 'none'; // Ẩn nút xmark
+        isFullScreen = false; // Đánh dấu thoát fullscreen
     }
 });
 
 // Dữ liệu câu hỏi
 const questionsContent1 = document.querySelector('.questions .questions-content');
 const questionsContent2 = document.querySelector('.questions2 .questions-content');
+const questionsContent3 = document.querySelector('.questions3 .questions-content');
+
 const submitBtn = document.querySelector('.submit');
 const resetBtn = document.querySelector('.reset');
 
@@ -229,6 +244,9 @@ const questionsPart2 = [
         answers: ['Thế kỷ XIX', 'Sau Thế chiến II đến đầu thập niên 1990', 'Thế chiến I', 'Giai đoạn Trung cổ'],
         correctAnswers: ['Sau Thế chiến II đến đầu thập niên 1990'], // Một đáp án đúng
     },
+];
+
+const questionsPart3 = [
     {
         question: 'Câu 1: Tại sao Vạn Lý Trường Thành được xây dựng?',
         answers: [
@@ -325,6 +343,26 @@ questionsPart2.forEach((item, index) => {
         </div>
     `;
     questionsContent2.innerHTML += questionHtml;
+});
+
+questionsPart3.forEach((item, index) => {
+    const options = item.answers
+        .map(
+            (answer) =>
+                `<button class="btn-answer" data-answer="${answer}" data-correct="${item.correctAnswers.includes(
+                    answer,
+                )}">${answer}</button>`,
+        )
+        .join('');
+    const questionHtml = `
+        <div class="question-block" data-index="${index}">
+            <p>${item.question}</p>
+            <div class="answer">
+                ${options}
+            </div>
+        </div>
+    `;
+    questionsContent3.innerHTML += questionHtml;
 });
 
 // Sự kiện chọn đáp án

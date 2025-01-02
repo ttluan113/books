@@ -318,6 +318,29 @@ td {
     font-family: inherit;
 }
 
+.highlight3 {
+    font-family: inherit;
+}
+
+.btn-xmark-1 {
+    position: fixed;
+    top: 1%;
+    right: 50%;
+    z-index: 9999;
+    display: none;
+}
+.btn-xmark-1 button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fc8742;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
+
 .questions {
     border-top: 1px solid #004aad;
 }

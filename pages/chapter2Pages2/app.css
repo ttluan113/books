@@ -105,6 +105,12 @@
     text-align: justify;
 }
 
+#icons:hover {
+    color: #fc8742;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
 /* .content-1 .inner-content p {
     text-align: justify;
     display: flex;
@@ -316,6 +322,7 @@ td {
 .highlight {
     background-color: #ffed00;
     color: #000;
+    font-family: inherit;
 }
 
 .questions {
@@ -568,6 +575,29 @@ td {
     background-color: #004aad; /* Màu nền khi hover vào mục con */
     color: white; /* Màu chữ khi hover vào mục con */
     transition: 0.3s;
+}
+
+.highlight3 {
+    font-family: inherit;
+}
+
+.btn-xmark-1 {
+    position: fixed;
+    top: 1%;
+    right: 50%;
+    z-index: 9999;
+    display: none;
+}
+.btn-xmark-1 button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fc8742;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
 }
 
 @media only screen and (max-width: 600px) {

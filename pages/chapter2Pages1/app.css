@@ -120,6 +120,12 @@ p {
     line-height: 2;
 }
 
+#icons:hover {
+    color: #fc8742;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
 #video {
     width: 25%;
     height: 20%;
@@ -322,9 +328,32 @@ td {
     margin-left: -1px;
 }
 
+.highlight3 {
+    font-family: inherit;
+}
+
+.btn-xmark-1 {
+    position: fixed;
+    top: 1%;
+    right: 50%;
+    z-index: 9999;
+    display: none;
+}
+.btn-xmark-1 button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fc8742;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
 .highlight {
     background-color: #ffed00;
     color: #000;
+    font-family: inherit;
 }
 
 .questions {

@@ -91,6 +91,10 @@
                 </div>
             </div>
             <div class="content" id="content-1">
+                <div id="test3" class="btn-xmark-1">
+                    <button id="btn-xmark-1"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
                 <div class="btn-up">
                     <button id="btn-up-1"><i class="fa-solid fa-chevron-down"></i></button>
                 </div>
@@ -100,6 +104,11 @@
                 </div>
                 <div class="inner-content">
                     <div class="content-1">
+                        <div class="audio">
+                            <div class="inner-audio">
+                                <audio src="./audio/audio1.mp3" controls></audio>
+                            </div>
+                        </div>
                         <div class="test">
                             <h4>1. Đảo Sip thuộc châu Á hay châu Âu?</h4>
                             <button class="comment-btn">
@@ -795,7 +804,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <video id="video" src="./videos/video1.mp4" controls muted></video>
                     <p>
                         Băng đảo Greenland có diện tích khoảng 2.175.600 km2. Đảo này thuộc Đan mạch, quanh năm tuyết
                         phủ. Nơi đây xuất hiện núi băng, trượt xuống biển gây nguy hiểm cho tàu thuyền (Titanic là một
@@ -1422,7 +1431,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <div>
+                        <video id="video" controls muted src="./videos/video2.mp4"></video>
+                    </div>
                     <p>
                         Trong sa mạc, thỉnh thoảng bạn sẽ bắt gặp từng hòn nham thạch cô độc nhô lên như những cây nấm
                         đá, có hòn cao đến 10 m. Cái “bụng” thon và cái “đầu” nặng nề của chúng thật thú vị. Chúng là
@@ -1754,10 +1765,19 @@
                         <div class="questions-content"></div>
                     </div>
 
+                    <div class="questions3">
+                        <div class="questions-title">
+                            <span> III. CHỌN ĐÁP ÁN ĐÚNG:</span>
+                        </div>
+                        <div class="questions-content"></div>
+                    </div>
+
                     <div class="btn-questions">
                         <button class="submit">Nộp bài</button>
                         <button class="reset">Xóa hết câu trả lời</button>
                     </div>
+
+
                 </div>
             </div>
 
@@ -1768,7 +1788,7 @@
             <div id="list-controller" class="list-controller">
                 <div class="btn-controller">
                     <div class="settings">
-                        <button id="btn-settings"><i class="fa-solid fa-gear"></i></button>
+                        <button id="btn-settings"><i id="icons" class="fa-solid fa-gear"></i></button>
                         <div id="form-settings" class="form-settings">
                             <div>
                                 <div class="settings-bgr">
@@ -1809,15 +1829,15 @@
                     </div>
 
                     <div>
-                        <button onclick="test1()"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="test1()"><i id="icons" class="fa-solid fa-pen"></i></button>
                     </div>
 
                     <div>
-                        <button onclick="test2()"><i class="fa-solid fa-eraser"></i></button>
+                        <button onclick="test2()"><i id="icons" class="fa-solid fa-eraser"></i></button>
                     </div>
 
                     <div class="search">
-                        <button id="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button id="btn-search"><i id="icons" class="fa-solid fa-magnifying-glass"></i></button>
                         <div class="form-search" id="form-search">
                             <div>
                                 <div class="input-search">
@@ -1831,7 +1851,7 @@
                     </div>
 
                     <div>
-                        <button id="btn-down"><i class="fa-solid fa-chevron-down"></i></button>
+                        <button id="btn-down"><i id="icons" class="fa-solid fa-chevron-down"></i></button>
                     </div>
                 </div>
             </div>
